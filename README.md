@@ -61,6 +61,57 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
+
+## Install
+
+#### 1. Clone 
+```ruby
+git clone https://github.com/rizkynurmega/tokoonline_temp.git
+```
+
+#### 2. Composer install on your cmd or terminal
+```ruby
+composer install
+```
+
+#### 3. Copy ```.env.example``` file to ```.env``` on the root folder.
+```ruby 
+cp .env.example .env
+``` 
+
+#### 4. Open your ```.env``` file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
+
+#### 5. Run :
+```ruby
+php artisan key:generate
+```
+
+#### 6. Creating a schema :
+```ruby 
+php artisan migrate
+```
+
+#### 7. Run seeder :
+```ruby 
+php artisan migrate
+```
+
+#### 8. Link file with Storage :
+```ruby 
+php artisan storage:link
+```
+
+#### 9. Run LaravelCollective :
+```ruby 
+composer require laravelcollective/html
+```
+
+#### 10. Running applications :
+```ruby
+php artisan serve
+```
+##### http://127.0.0.1:8000
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
