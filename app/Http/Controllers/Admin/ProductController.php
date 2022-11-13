@@ -336,15 +336,15 @@ class ProductController extends Controller
 
 			$filePath = $image->storeAs($folder . '/original', $fileName, 'public');
 
+			$resizedImage = $this->_resizeImage($image, $fileName, $folder);
 
-
-			$params = 
+			$params = array_merge(
 				[
 					'product_id' => $product->id,
 					'path' => $filePath,
-                ];
-		
-			
+				],
+				$resizedImage
+			);
 
 			if (ProductImage::create($params)) {
 				Session::flash('success', 'Image has been uploaded');
@@ -354,6 +354,49 @@ class ProductController extends Controller
 
 			return redirect('admin/products/' . $id . '/images');
 		}
+	}
+
+	private function _resizeImage($image, $fileName, $folder)
+	{
+		$resizedImage = [];
+
+		$smallImageFilePath = $folder . '/small/' . $fileName;
+		$size = explode('x', ProductImage::SMALL);
+		list($width, $height) = $size;
+
+		$smallImageFile = \Image::make($image)->fit($width, $height)->stream();
+		if (\Storage::put('public/' . $smallImageFilePath, $smallImageFile)) {
+			$resizedImage['small'] = $smallImageFilePath;
+		}
+		
+		$mediumImageFilePath = $folder . '/medium/' . $fileName;
+		$size = explode('x', ProductImage::MEDIUM);
+		list($width, $height) = $size;
+
+		$mediumImageFile = \Image::make($image)->fit($width, $height)->stream();
+		if (\Storage::put('public/' . $mediumImageFilePath, $mediumImageFile)) {
+			$resizedImage['medium'] = $mediumImageFilePath;
+		}
+
+		$largeImageFilePath = $folder . '/large/' . $fileName;
+		$size = explode('x', ProductImage::LARGE);
+		list($width, $height) = $size;
+
+		$largeImageFile = \Image::make($image)->fit($width, $height)->stream();
+		if (\Storage::put('public/' . $largeImageFilePath, $largeImageFile)) {
+			$resizedImage['large'] = $largeImageFilePath;
+		}
+
+		$extraLargeImageFilePath  = $folder . '/xlarge/' . $fileName;
+		$size = explode('x', ProductImage::EXTRA_LARGE);
+		list($width, $height) = $size;
+
+		$extraLargeImageFile = \Image::make($image)->fit($width, $height)->stream();
+		if (\Storage::put('public/' . $extraLargeImageFilePath, $extraLargeImageFile)) {
+			$resizedImage['extra_large'] = $extraLargeImageFilePath;
+		}
+
+		return $resizedImage;
 	}
 
     public function removeImage($id)

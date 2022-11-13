@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    function index(){
-		return view('admin.dashboard.index');
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
+	public function index()
+	{
+		return view('admin.dashboard.index', $this->data);
 	}
 }

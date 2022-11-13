@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password',
+		'first_name', 'last_name', 'email', 'phone', 'password', 'company', 'address1', 'address2', 'province_id', 'city_id', 'postcode',
     ];
 
     /**
@@ -49,5 +49,10 @@ class User extends Authenticatable
 	public function products()
 	{
 		return $this->hasMany('App\Models\Product');
+	}
+
+  public function favorites()
+	{
+		return $this->hasMany('App\Models\Favorite');
 	}
 }

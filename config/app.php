@@ -200,6 +200,8 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,        
         Laracasts\Flash\FlashServiceProvider::class,        
         Collective\Html\HtmlServiceProvider::class,
+        Darryldecode\Cart\CartServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
@@ -215,6 +217,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'General' => App\Helpers\General::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];

@@ -110,26 +110,39 @@
 	  <script src="{{ URL::asset('admin/assets/plugins/jekyll-search.min.js') }}"></script>
     <script>
 
-		$(".delete").on("submit", function () {
-			return confirm("Are you sure you want to delete this?");
-		});
+      $(".delete").on("submit", function () {
+        return confirm("Are you sure you want to delete this?");
+      });
 
-		function showHideConfigurableAttributes() {
-			var productType = $(".product-type").val();
-				
-			if (productType == 'configurable') {
-				$(".configurable-attributes").show();
-			} else {
-				$(".configurable-attributes").hide();
+      $("a.delete").on("click", function () {
+			event.preventDefault();
+			var orderId = $(this).attr('order-id');
+
+			if (confirm("Do you want to remove this?")) {
+				document.getElementById('delete-form-' + orderId ).submit();
 			}
-		}
-
-		$(function(){
-			showHideConfigurableAttributes();
-			$(".product-type").change(function() {
-				showHideConfigurableAttributes();
-			});
 		});
+
+    $(".restore").on("click", function () {
+			return confirm("Do you want to restore this?");
+		});
+
+      function showHideConfigurableAttributes() {
+        var productType = $(".product-type").val();
+          
+        if (productType == 'configurable') {
+          $(".configurable-attributes").show();
+        } else {
+          $(".configurable-attributes").hide();
+        }
+      }
+
+      $(function(){
+        showHideConfigurableAttributes();
+        $(".product-type").change(function() {
+          showHideConfigurableAttributes();
+        });
+      });
 	</script>
 </body>
 </html>
