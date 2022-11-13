@@ -44,7 +44,7 @@ Route::get('/carts/remove/{cartID}', [CartController::class, 'destroy']);
 Route::post('/carts', [CartController::class, 'store']);
 Route::post('/carts/update', [CartController::class, 'update']);
 
-Route::get('orders/checkout', [\OrderController::class, 'checkout']);
+Route::get('orders/checkout', [OrderController::class, 'checkout']);
 Route::post('orders/checkout', [OrderController::class, 'doCheckout']);
 Route::post('orders/shipping-cost', [OrderController::class, 'shippingCost']);
 Route::post('orders/set-shipping', [OrderController::class, 'setShipping']);
