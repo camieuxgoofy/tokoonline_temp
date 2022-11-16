@@ -68,6 +68,8 @@ Route::group(
     function () {
         Route::get('dashboard',[DashboardController::class, 'index']);
         Route::resource('categories', CategoryController::class);
+		
+		Route::resource('suppliers', SuppliersController::class);
 
         Route::resource('products', ProductController::class);
         Route::get('products/{productID}/images', [ProductController::class, 'images'])->name('products.images');
