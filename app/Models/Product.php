@@ -21,6 +21,7 @@ class Product extends Model
 		'short_description',
 		'description',
 		'status',
+		'supplier_id'
 	];
 
 	public const DRAFT = 0;
@@ -118,6 +119,16 @@ class Product extends Model
 	public function orderItems()
 	{
 		return $this->hasMany('App\Models\OrderItem');
+	}
+
+	/**
+	 * Define relationship with the supplier
+	 *
+	 * @return void
+	 */
+	public function supplier()
+	{
+		return $this->belongsTo('App\Models\Supplier');
 	}
 
 	/**
