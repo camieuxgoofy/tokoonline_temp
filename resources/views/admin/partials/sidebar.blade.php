@@ -16,6 +16,23 @@
             <div class="" data-simplebar style="height: 100%;">
               <!-- sidebar menu -->
               <ul class="nav sidebar-inner" id="sidebar-menu">
+			  <li  class="has-sub  {{ ($currentAdminMenu == 'supplier') ? 'expand active' : ''}}" >
+					<a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#supplier"
+						aria-expanded="false" aria-controls="supplier">
+						<i class="mdi mdi-account-multiple"></i>
+						<span class="nav-text">Supplier</span> <b class="caret"></b>
+					</a>
+					<ul  class="collapse  {{ ($currentAdminMenu == 'supplier') ? 'show' : ''}}"  id="supplier"
+						data-parent="#sidebar-menu">
+						<div class="sub-menu">
+							<li  class="{{ ($currentAdminSubMenu == 'supplier') ? 'active' : ''}}">
+								<a class="sidenav-item-link" href="{{ url('admin/suppliers')}}">
+								<span class="nav-text">Data Supplier</span>
+								</a>
+							</li>
+						</div>
+					</ul>
+				</li>
 				<li  class="has-sub  {{ ($currentAdminMenu == 'catalog') ? 'expand active' : ''}}" >
 					<a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#catalog"
 						aria-expanded="false" aria-controls="catalog">

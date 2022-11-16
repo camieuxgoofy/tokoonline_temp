@@ -15,6 +15,7 @@ use App\Models\Attribute;
 use App\Models\AttributeOption;
 use App\Models\ProductAttributeValue;
 use App\Models\ProductInventory;
+use App\Models\Supplier;
 
 use Str;
 use Auth;
@@ -56,9 +57,11 @@ class ProductController extends Controller
     public function create()
     {
 		$categories = Category::orderBy('name', 'ASC')->get();
+		$suppliers = Supplier::orderBy('name', 'ASC')->get();
 		$configurableAttributes = $this->_getConfigurableAttributes();
 
 		$this->data['categories'] = $categories->toArray();
+		$this->data['suppliers'] = $suppliers;
 		$this->data['product'] = null;
 		$this->data['productID'] = 0;
 		$this->data['categoryIDs'] = [];
@@ -214,8 +217,10 @@ class ProductController extends Controller
 		$product->qty = isset($product->productInventory) ? $product->productInventory->qty : null;
 
 		$categories = Category::orderBy('name', 'ASC')->get();
+		$suppliers = Supplier::orderBy('name', 'ASC')->get();
 
 		$this->data['categories'] = $categories->toArray();
+		$this->data['suppliers'] = $suppliers;
 		$this->data['product'] = $product;
 		$this->data['productID'] = $product->id;
 		$this->data['categoryIDs'] = $product->categories->pluck('id')->toArray();

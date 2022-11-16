@@ -26,6 +26,20 @@
                         {!! Form::open(['url' => 'admin/products']) !!}
                     @endif
                         <div class="form-group">
+                            <label for="supplier_id">Supplier</label>
+                            <select name="supplier_id" class="form-control">
+                                <option value="">-- Choose Supplier --</option>
+                                {!! Form::label('supplier_id', 'Supplier') !!}
+                                @foreach ($suppliers as $key => $supplier)
+                                    <option value="{{ $supplier->id }}"
+                                    @if (!empty($product) && $supplier->id == $product->supplier_id)
+                                        selected="selected"
+                                    @endif
+                                    >{{ $supplier->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             {!! Form::label('type', 'Type') !!}
                             {!! Form::select('type', $types , !empty($product) ? $product->type : null, ['class' => 'form-control product-type', 'placeholder' => '-- Choose Product Type --', 'disabled' => !empty($product)]) !!}
                         </div>
