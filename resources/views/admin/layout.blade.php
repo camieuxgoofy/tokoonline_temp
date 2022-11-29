@@ -109,6 +109,9 @@
     <script src="{{ URL::asset('admin/assets/plugins/data-tables/datatables.bootstrap4.min.js') }}"></script>
 	  <script src="{{ URL::asset('admin/assets/plugins/jekyll-search.min.js') }}"></script>
     <script>
+    $('.datepicker').datepicker({
+			format: 'yyyy-mm-dd'
+		});
 
       $(".delete").on("submit", function () {
         return confirm("Are you sure you want to delete this?");
