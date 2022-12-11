@@ -61,6 +61,9 @@ class Permission extends \Spatie\Permission\Models\Permission
 			'add_suppliers',
 			'edit_suppliers',
 			'delete_suppliers',
+
+			'view_addstocks',
+			'add_addstocks'
 		];
 	}
 }
