@@ -16,7 +16,7 @@
             <div class="" data-simplebar style="height: 100%;">
               <!-- sidebar menu -->
               <ul class="nav sidebar-inner" id="sidebar-menu">
-			  <li  class="has-sub  {{ ($currentAdminMenu == 'supplier') ? 'expand active' : ''}}" >
+			  	<li  class="has-sub  {{ ($currentAdminMenu == 'supplier') ? 'expand active' : ''}}" >
 					<a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#supplier"
 						aria-expanded="false" aria-controls="supplier">
 						<i class="mdi mdi-account-multiple"></i>
@@ -55,6 +55,23 @@
 							<li class="{{ ($currentAdminSubMenu == 'attribute') ? 'active' : ''}}">
 								<a class="sidenav-item-link" href="{{ url('admin/attributes')}}">
 								<span class="nav-text">Attributes</span>
+								</a>
+							</li>
+						</div>
+					</ul>
+				</li>
+				<li  class="has-sub  {{ ($currentAdminMenu == 'stock') ? 'expand active' : ''}}" >
+					<a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#stock"
+						aria-expanded="false" aria-controls="stock">
+						<i class="mdi mdi-folder"></i>
+						<span class="nav-text">Manage Stock</span> <b class="caret"></b>
+					</a>
+					<ul  class="collapse  {{ ($currentAdminMenu == 'stock') ? 'show' : ''}}"  id="stock"
+						data-parent="#sidebar-menu">
+						<div class="sub-menu">
+							<li  class="{{ ($currentAdminSubMenu == 'add_stock') ? 'active' : ''}}">
+								<a class="sidenav-item-link" href="{{ url('admin/addstocks')}}">
+								<span class="nav-text">Barang Masuk</span>
 								</a>
 							</li>
 						</div>

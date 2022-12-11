@@ -147,6 +147,8 @@
         });
       });
 	</script>
+
+  @yield('custom_footer')
 </body>
 </html>
 
