@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -65,7 +66,7 @@ class RegisterController extends Controller
      */
 	protected function create(array $data)
 	{
-		return User::create(
+		$user = User::create(
 			[
 				'first_name' => $data['first_name'],
 				'last_name' => $data['last_name'],
@@ -73,7 +74,26 @@ class RegisterController extends Controller
 				'password' => Hash::make($data['password']),
 			]
 		);
+
+        $this->syncPermissions('Customer', $user);
+        return $user;
 	}
+
+    private function syncPermissions($role, $user)
+    {
+        // Get the roles
+        $roles = Role::where('name', $role)->get();
+
+        // check for current role changes
+        if( ! $user->hasAllRoles( $roles ) ) {
+            // reset all direct permissions for user
+            $user->permissions()->sync([]);
+        }
+
+        $user->syncRoles($roles);
+
+        return $user;
+    }
 
 	/**
 	 * Show register form
