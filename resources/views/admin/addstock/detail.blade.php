@@ -6,26 +6,26 @@
             <div class="col-lg-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Barang Masuk</h2>
+                        <h2>Detail Barang Masuk</h2>
                     </div>
                     <div class="card-body">
+                        <a href="{{ url('admin/addstocks') }}" class="btn btn-secondary btn-sm">Back</a>
+                        <br><br>
                         @include('admin.partials.flash')
                         <table id="basic-data-table" class="table nowarp table-bordered table-striped " style="width:100%">
                             <thead>
                                 <th>#</th>
-                                <th>Tanggal</th>
-                                <th>Supplier</th>
-                                <th>Created By</th>
-                                <th>Action</th>
+                                <th>Quantity</th>
+                                <th>Harga Pembelian</th>
+                                <th>Product</th>
                             </thead>
                             <tbody>
-                                @forelse ($addstocks as $i => $value)
+                                @forelse ($data as $i => $value)
                                     <tr>    
                                         <td>{{ $i+1 }}</td>
-                                        <td>{{ date("d-M-Y", strtotime($value->date)) }}</td>
-                                        <td>{{ $value->supplier->name }}</td>
-                                        <td>{{ $value->user->first_name . ' ' . $value->user->last_name  }}</td>
-                                        <td><a href="{{ url('admin/addstocks/'. $value->id ) }}" class="btn btn-warning btn-sm">detail</a></td>
+                                        <td>{{ $value->qty }}</td>
+                                        <td>{{ "Rp " . number_format($value->purchase_price,0,',','.') }}</td>
+                                        <td>{{ $value->product->name }}</td>
                                     </tr>
                                 @empty
                                     <tr>
@@ -34,7 +34,7 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        {{ $addstocks->links() }}
+                        {{ $data->links() }}
                     </div>
 
                     @can('add_addstocks')

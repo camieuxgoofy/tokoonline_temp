@@ -65,11 +65,10 @@ $formTitle = !empty($addstocks) ? 'Update' : 'New'
                     <table class="table nowarp table-bordered table-striped " style="width:100%">
                         <thead>
                             <th>#</th>
-                            <th>Tanggal</th>
+                            <th>Product</th>
                             <th>Quantity</th>
                             <th>Harga Pembelian</th>
-                            <th>Supplier</th>
-                            <th>Product</th>
+                            <th>Total Harga</th>
                         </thead>
                         <tbody id="table_addstock">
                         </tbody>
@@ -89,39 +88,32 @@ $formTitle = !empty($addstocks) ? 'Update' : 'New'
     const dataStock = []
 
     function addstock() {
-        const date = $('#idate').val();
         const qty = $('#iqty').val();
         const purchase_price = $('#ipurchase_price').val();
-        const supplier_id = $('#isupplier_id').val();
         const product_id = $('#iproduct_id').val();
-        const supplier_name = $("#isupplier_id option:selected").text();
         const product_name = $("#iproduct_id option:selected").text();
         if (
-            !date || !qty || !purchase_price || !supplier_id || !product_id
+            !qty || !purchase_price || !product_id
         ) {
             alert('Please fill all fields!')
         } else {
+
             dataStock.push({
-                date,
                 qty,
                 purchase_price,
-                supplier_id,
                 product_id,
-                supplier_name,
                 product_name,
             })
 
-            $('#idate').val("")
             $('#iqty').val("")
             $('#ipurchase_price').val("")
-            $('#isupplier_id').val("")
             $('#iproduct_id').val("")
         }
 
         let html = '';
         let i = 1;
         for (const key of dataStock) {
-            html = html + `<tr><td>${i}</td><td>${key.date}</td><td>${key.qty}</td><td>Rp. ${key.purchase_price}</td><td>${key.supplier_name}</td><td>${key.product_name}</td></tr>`
+            html = html + `<tr><td>${i}</td><td>${key.product_name}</td><td>${key.qty}</td><td>Rp. ${key.purchase_price}</td><td>Rp. ${Number(key.purchase_price)* Number(key.qty)}</td></tr>`
             i++;
         }
 
@@ -129,24 +121,31 @@ $formTitle = !empty($addstocks) ? 'Update' : 'New'
     }
 
     function submit() {
-        if (
-            dataStock.length  == 0
-        ) {
+        const date = $('#idate').val();
+        const supplier_id = $('#isupplier_id').val();
+
+        if (dataStock.length == 0) {
             alert('Please add stock first!')
-        } else {
-            $.ajax({
-                url: "{{ url('admin/addstocks')}}",
-                method: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    dataStock
-                },
-                type: 'json',
-                success: function(data) {
-                    window.location.href = "{{ url('admin/addstocks')}}";
-                }
-            });
         }
+
+        if (!date || !supplier_id) {
+            alert('Please fill date and supplier!')
+        }
+
+        $.ajax({
+            url: "{{ url('admin/addstocks')}}",
+            method: "POST",
+            data: {
+                _token: "{{ csrf_token() }}",
+                date,
+                supplier_id,
+                dataStock
+            },
+            type: 'json',
+            success: function(data) {
+                window.location.href = "{{ url('admin/addstocks')}}";
+            }
+        });
     }
 </script>
 @endsection

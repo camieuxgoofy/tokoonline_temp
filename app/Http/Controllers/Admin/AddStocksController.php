@@ -10,6 +10,7 @@ use DB;
 use Session;
 use App\Authorizable;
 use App\Models\AddStock;
+use App\Models\DetailAddStock;
 use App\Models\Product;
 use App\Models\ProductInventory;
 use App\Models\Supplier;
@@ -31,9 +32,14 @@ class AddStocksController extends Controller
 	 */
 	public function index()
 	{
-		$this->data['addstocks'] = AddStock::orderBy('date', 'DESC')->paginate(10);
-
+		$this->data['addstocks'] = AddStock::with('supplier', 'user')->orderBy('date', 'DESC')->paginate(10);
 		return view('admin.addstock.index', $this->data);
+	}
+
+	public function show($id)
+	{
+		$this->data['data'] = DetailAddStock::with('product')->where('add_stock_id', $id)->orderBy('created_at', 'DESC')->paginate(10);
+		return view('admin.addstock.detail', $this->data);
 	}
 
 	/**
@@ -62,16 +68,20 @@ class AddStocksController extends Controller
 		$params = $request->except('_token');
 		$addstocks = DB::transaction(
 			function () use ($params) {
+				$params['id'] = Str::uuid();
+				$params['user_id'] = \Auth::user()->id;
+				$add = AddStock::create($params);
 				foreach ($params['dataStock'] as $key => $value) {
-					$value['user_id'] = \Auth::user()->id;
-					AddStock::create($value);
+					$value['id'] = Str::uuid();
+					$value['add_stock_id'] = $params['id'];
+					DetailAddStock::create($value);
 
 					$productInventory = ProductInventory::where('product_id', $value['product_id'])->firstOrFail();
 					$newQty = (int)$productInventory['qty'] + (int)$value['qty'];
 
 					$productInventory->update(["qty" => $newQty]);
 				}
-				
+
 				return "success";
 			}
 		);
@@ -86,5 +96,4 @@ class AddStocksController extends Controller
 			"status" => $addstocks
 		];
 	}
-
 }
