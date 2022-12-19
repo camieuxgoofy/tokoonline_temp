@@ -25,7 +25,11 @@
                                         <td>{{ date("d-M-Y", strtotime($value->date)) }}</td>
                                         <td>{{ $value->supplier->name }}</td>
                                         <td>{{ $value->user->first_name . ' ' . $value->user->last_name  }}</td>
-                                        <td><a href="{{ url('admin/addstocks/'. $value->id ) }}" class="btn btn-warning btn-sm">detail</a></td>
+                                        <td>
+                                            <a href="{{ url('admin/addstocks/'. $value->id ) }}" class="btn btn-primary btn-sm">detail</a>
+                                            <button class="btn btn-warning btn-sm">edit</button>
+                                            <button class="btn btn-danger btn-sm">delete</button>
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>
