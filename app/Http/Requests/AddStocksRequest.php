@@ -23,10 +23,14 @@ class AddStocksRequest extends FormRequest
      */
     public function rules()
     {
+        $date = 'required';
+        $supplier_id = 'required';
         $dataStock = 'required';
 
         return [
-            'dataStock' => $dataStock
+            'date' => $date,
+            'supplier_id' => $supplier_id,
+            'dataStock' => $dataStock,
         ];
     }
 }

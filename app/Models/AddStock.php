@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class AddStock extends Model
 {
+	public $incrementing = false;
+
 	protected $fillable = [
+		'id',
 		'date',
-		'qty',
-		'purchase_price',
 		'supplier_id',
-		'product_id',
 		'user_id',
 	];
 
@@ -20,13 +20,13 @@ class AddStock extends Model
 		return $this->belongsTo('App\Models\Supplier');
 	}
 
-	public function product()
-	{
-		return $this->belongsTo('App\Models\Product');
-	}
-
 	public function user()
 	{
 		return $this->belongsTo('App\Models\User');
+	}
+
+	public function details()
+	{
+		return $this->hasMany('App\Models\DetailAddStock');
 	}
 }
