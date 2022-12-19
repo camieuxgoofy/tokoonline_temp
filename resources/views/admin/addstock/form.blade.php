@@ -69,6 +69,7 @@ $formTitle = !empty($addstocks) ? 'Update' : 'New'
                             <th>Quantity</th>
                             <th>Harga Pembelian</th>
                             <th>Total Harga</th>
+                            <th>Action</th>
                         </thead>
                         <tbody id="table_addstock">
                         </tbody>
@@ -110,14 +111,23 @@ $formTitle = !empty($addstocks) ? 'Update' : 'New'
             $('#iproduct_id').val("")
         }
 
+        showData();
+    }
+
+    function showData(){
         let html = '';
         let i = 1;
-        for (const key of dataStock) {
-            html = html + `<tr><td>${i}</td><td>${key.product_name}</td><td>${key.qty}</td><td>Rp. ${key.purchase_price}</td><td>Rp. ${Number(key.purchase_price)* Number(key.qty)}</td></tr>`
+        for (const [x, key] of dataStock.entries()) {
+            html = html + `<tr><td>${i}</td><td>${key.product_name}</td><td>${key.qty}</td><td>Rp. ${key.purchase_price}</td><td>Rp. ${Number(key.purchase_price)* Number(key.qty)}</td><td><button onclick="deleteData(${x})" class="btn btn-danger btn-sm">delete</button></td></td></tr>`
             i++;
         }
 
         $('#table_addstock').html(html)
+    }
+
+    function deleteData(i){
+        dataStock.splice(i, 1)
+        showData()
     }
 
     function submit() {
