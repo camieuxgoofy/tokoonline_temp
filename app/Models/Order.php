@@ -41,6 +41,7 @@ class Order extends Model
 		'cancelled_by',
 		'cancelled_at',
 		'cancellation_note',
+		'out_coming_stock_id',
 	];
 	
 	protected $appends = ['customer_full_name'];

@@ -75,6 +75,13 @@
 								</a>
 							</li>
 						</div>
+						<div class="sub-menu">
+							<li  class="{{ ($currentAdminSubMenu == 'outcoming_stock') ? 'active' : ''}}">
+								<a class="sidenav-item-link" href="{{ url('admin/outcomingstocks')}}">
+								<span class="nav-text">Barang Keluar</span>
+								</a>
+							</li>
+						</div>
 					</ul>
 				</li>
 				<li  class="has-sub {{ ($currentAdminMenu == 'order') ? 'expand active' : ''}}">
