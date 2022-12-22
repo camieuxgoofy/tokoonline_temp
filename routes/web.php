@@ -71,6 +71,7 @@ Route::group(
 		
 		Route::resource('suppliers', SuppliersController::class);
 		Route::resource('addstocks', AddStocksController::class);
+		Route::resource('outcomingstocks', OutComingStocksController::class);
 
         Route::resource('products', ProductController::class);
         Route::get('products/{productID}/images', [ProductController::class, 'images'])->name('products.images');
