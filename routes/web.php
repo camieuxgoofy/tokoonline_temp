@@ -10,16 +10,13 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UserController;
-
-
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PaymentController;
-
+use App\Http\Controllers\ProductsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -111,3 +108,5 @@ Route::group(
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/about', [App\Http\Controllers\HomeController::class, 'about']);
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact']);

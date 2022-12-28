@@ -1,8 +1,8 @@
-<div class="header-cart">
+<!-- <div class="header-cart">
 	<a class="icon-cart-furniture" href="{{ url('carts') }}">
 		<i class="ti-shopping-cart"></i>
 		<span class="shop-count-furniture green">{{ \Cart::getTotalQuantity() }}</span>
-	</a>
+	</a> -->
 	@if (!\Cart::isEmpty())
 		<ul class="cart-dropdown">
 			@foreach (\Cart::getContent() as $item)
@@ -37,4 +37,4 @@
 			</li>
 		</ul>
 	@endif
-</div>
+<!-- </div> -->
