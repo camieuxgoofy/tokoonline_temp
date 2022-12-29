@@ -45,9 +45,6 @@ class OutComingStocksController extends Controller
 
 	public function show($id)
 	{
-		// $this->data['data'] = DetailOutComingStock::with('product')->where('out_coming_stock_id', $id)->orderBy('created_at', 'DESC')->paginate(10);
-		// return view('admin.outcomingstock.detail', $this->data);
-
 		$this->data['data'] = OrderItem::whereHas('order', function ($q) use ($id) {
 			$q->where('out_coming_stock_id', $id);
 		})->orderBy('created_at', 'DESC')->paginate(10);
@@ -199,7 +196,7 @@ class OutComingStocksController extends Controller
 				foreach ($params['dataStock'] as $key => $value) {
 					$value['id'] = Str::uuid();
 					$value['out_coming_stock_id'] = $params['id'];
-					DetailOutComingStock::create($value);
+					// DetailOutComingStock::create($value);
 
 					$productInventory = ProductInventory::where('product_id', $value['product_id'])->firstOrFail();
 					$newQty = (int)$productInventory['qty'] - (int)$value['qty'];
