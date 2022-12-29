@@ -70,7 +70,7 @@ class AddStocksController extends Controller
 			function () use ($params) {
 				$params['id'] = Str::uuid();
 				$params['user_id'] = \Auth::user()->id;
-				$add = AddStock::create($params);
+				AddStock::create($params);
 				foreach ($params['dataStock'] as $key => $value) {
 					$value['id'] = Str::uuid();
 					$value['add_stock_id'] = $params['id'];

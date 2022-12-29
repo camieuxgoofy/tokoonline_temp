@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\OutComingStocksController;
 
 
 use App\Http\Controllers\CartController;
@@ -71,6 +72,7 @@ Route::group(
 		
 		Route::resource('suppliers', SuppliersController::class);
 		Route::resource('addstocks', AddStocksController::class);
+		Route::post('outcomingstocks/manual', [OutComingStocksController::class, 'storeManual']);
 		Route::resource('outcomingstocks', OutComingStocksController::class);
 
         Route::resource('products', ProductController::class);

@@ -6,34 +6,26 @@
             <div class="col-lg-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Barang Keluar</h2>
+                        <h2>Detail Barang Keluar</h2>
                     </div>
                     <div class="card-body">
+                        <a href="{{ url('admin/outcomingstocks') }}" class="btn btn-secondary btn-sm">Back</a>
+                        <br><br>
                         @include('admin.partials.flash')
                         <table id="basic-data-table" class="table nowarp table-bordered table-striped " style="width:100%">
                             <thead>
                                 <th>#</th>
-                                <th>Tanggal</th>
-                                <th>Category</th>
-                                <!-- <th>File Name</th> -->
-                                <th>Total Product</th>
-                                <th>Uploaded By</th>
-                                <th>Action</th>
+                                <th>Quantity</th>
+                                <th>Harga Jual</th>
+                                <th>Product</th>
                             </thead>
                             <tbody>
-                                @forelse ($outcomingstocks as $i => $value)
+                                @forelse ($data as $i => $value)
                                     <tr>    
                                         <td>{{ $i+1 }}</td>
-                                        <td>{{ date("d-M-Y", strtotime($value->created_at)) }}</td>
-                                        <td>{{ $value->category }}</td>
-                                        <!-- <td>{{ $value->file_name }}</td> -->
-                                        <td>{{ $value->total_row }}</td>
-                                        <td>{{ $value->user->first_name . ' ' . $value->user->last_name  }}</td>
-                                        <td>
-                                            <a href="{{ url('admin/outcomingstocks/'. $value->id ) }}" class="btn btn-primary btn-sm">detail</a>
-                                            <button class="btn btn-warning btn-sm">edit</button>
-                                            <button class="btn btn-danger btn-sm">delete</button>
-                                        </td>
+                                        <td>{{ $value->qty }}</td>
+                                        <td>{{ "Rp " . number_format($value->base_price,0,',','.') }}</td>
+                                        <td>{{ $value->name }}</td>
                                     </tr>
                                 @empty
                                     <tr>
@@ -42,7 +34,7 @@
                                 @endforelse
                             </tbody>
                         </table>
-                        {{ $outcomingstocks->links() }}
+                        {{ $data->links() }}
                     </div>
 
                     @can('add_outcomingstocks')
