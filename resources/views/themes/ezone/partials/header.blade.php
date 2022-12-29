@@ -19,7 +19,7 @@
 				<div class="classynav">
 					<ul>
 						<li><a href="/">Home</a>
-						<li><a href="/">Shop</a>
+						<li><a href="{{ url('products') }}">Shop</a>
 							<div class="megamenu">
 								<ul class="single-mega cn-col-4">
 									<li class="title">Women's Collection</li>
