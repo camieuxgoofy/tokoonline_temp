@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\OutComingStocksController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
@@ -67,6 +68,9 @@ Route::group(
         Route::resource('categories', CategoryController::class);
 		
 		Route::resource('suppliers', SuppliersController::class);
+		Route::resource('addstocks', AddStocksController::class);
+		Route::post('outcomingstocks/manual', [OutComingStocksController::class, 'storeManual']);
+		Route::resource('outcomingstocks', OutComingStocksController::class);
 
         Route::resource('products', ProductController::class);
         Route::get('products/{productID}/images', [ProductController::class, 'images'])->name('products.images');

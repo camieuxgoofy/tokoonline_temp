@@ -17,6 +17,7 @@
                                 <th>Whatsapp No</th>
                                 <th>Email</th>
                                 <th>Address</th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
                                 @forelse ($suppliers as $supplier)

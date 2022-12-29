@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         @include('admin.partials.flash')
-                        <table class="table table-bordered table-striped">
+                        <table id="basic-data-table" class="table nowarp table-bordered table-striped " style="width:100%">
                             <thead>
                                 <th>#</th>
                                 <th>Name</th>
@@ -23,7 +23,7 @@
                                 @forelse ($users as $user)
                                     <tr>    
                                         <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->roles->implode('name', ', ') }}</td>
                                         <td>{{ $user->created_at }}</td>
