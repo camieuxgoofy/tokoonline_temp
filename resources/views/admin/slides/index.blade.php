@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         @include('admin.partials.flash')
-                        <table class="table table-bordered table-striped">
+                        <table id="basic-data-table" class="table nowarp table-bordered table-striped " style="width:100%">
                             <thead>
                                 <th>#</th>
                                 <th>Title</th>
