@@ -29,11 +29,21 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::popular()->get();
-		$this->data['products'] = $products;
+        $this->data['products'] = $products;
 
-		$slides = Slide::active()->orderBy('position', 'ASC')->get();
-		$this->data['slides'] = $slides;
-        
-		return $this->loadTheme('home', $this->data);
+        $slides = Slide::active()->orderBy('position', 'ASC')->get();
+        $this->data['slides'] = $slides;
+
+        return $this->loadTheme('home', $this->data);
+    }
+
+    public function about()
+    {
+        return $this->loadTheme('about.index');
+    }
+
+    public function contact()
+    {
+        return $this->loadTheme('contact.index');
     }
 }
