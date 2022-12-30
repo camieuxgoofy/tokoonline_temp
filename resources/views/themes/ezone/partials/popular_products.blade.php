@@ -1,7 +1,7 @@
 <!-- product area start -->
 @if ($products)
 
-<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ asset('essence/img/bg-img/bg-1.jpg') }})">
+<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ asset('essence/img/bg-img/home-bg.png') }})">
 	<div class="container-fluid">
 		<div class="breadcrumb-content text-center">
 			<h2>Home</h2>

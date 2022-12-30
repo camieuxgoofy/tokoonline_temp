@@ -5,9 +5,9 @@
 		<div class="container-fluid">
 			<!-- Desktop Display -->
 			<div class="header-bottom-wrapper">
-				<div class="logo-2 furniture-logo ptb-30">
+				<div class="logo-2 furniture-logo">
 					<a href="/">
-						<img src="{{ asset('themes/ezone/assets/img/logo/2.png') }}" alt="Logo">
+						<img style="width: 100px;" src="{{ asset('essence/img/core-img/logo-hatishop.jpg') }}" alt="Logo">
 					</a>
 				</div>
 				<div class="menu-style-2 furniture-menu menu-hover">

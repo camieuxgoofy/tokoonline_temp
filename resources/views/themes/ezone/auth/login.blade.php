@@ -2,17 +2,6 @@
 
 @section('content')
 
-<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ asset('essence/img/bg-img/blog6.jpg') }})">
-	<div class="container-fluid">
-		<div class="breadcrumb-content text-center">
-			<h2>Login</h2>
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li>Login</li>
-			</ul>
-		</div>
-	</div>
-</div>
 
 <!-- register-area start -->
 <div class="register-area ptb-100">
