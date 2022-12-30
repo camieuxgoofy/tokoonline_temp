@@ -1,7 +1,7 @@
 @extends('themes.ezone.layout')
 
 @section('content')
-<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: url({{ asset('themes/ezone/assets/img/bg/breadcrumb.jpg') }})">
+<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{ asset('essence/img/bg-img/bg-5.jpg') }})">
 	<div class="container-fluid">
 		<div class="breadcrumb-content text-center">
 			<h2>Login</h2>
@@ -26,9 +26,9 @@
 									<div class="col-md-12">
 										<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="{{ __('E-Mail Address') }}">
 										@error('email')
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $message }}</strong>
-											</span>
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
 										@enderror
 									</div>
 								</div>
@@ -36,22 +36,22 @@
 									<div class="col-md-12">
 										<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}">
 										@error('password')
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $message }}</strong>
-											</span>
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
 										@enderror
 									</div>
 								</div>
 								<div class="form-group row mb-0">
 									<div class="col-md-12">
 										<div class="button-box">
-                                            <div class="login-toggle-btn">
-                                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                <label for="remember">{{ __('Remember Me') }}</label>
-                                                <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
-                                            </div>
-                                            <button type="submit" class="default-btn floatright">Login</button>
-                                        </div>
+											<div class="login-toggle-btn">
+												<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+												<label for="remember">{{ __('Remember Me') }}</label>
+												<a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
+											</div>
+											<button type="submit" class="default-btn floatright">Login</button>
+										</div>
 									</div>
 								</div>
 							</form>

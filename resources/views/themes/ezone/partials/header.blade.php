@@ -81,7 +81,7 @@
 			</div>
 			<!-- Favourite Area -->
 			<div class="favourite-area">
-				<a href="#"><img src="essence/img/core-img/heart.svg" alt=""></a>
+				<a href="{{ url('favorites') }}"><img src="essence/img/core-img/heart.svg" alt=""></a>
 			</div>
 			<!-- User Login Info -->
 			@guest
