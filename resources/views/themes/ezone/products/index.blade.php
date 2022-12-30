@@ -1,14 +1,13 @@
 @extends('themes.ezone.layout')
 
 @section('content')
-<div class="popular-product-area wrapper-padding-3 pt-115 pb-115">
-	<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{ asset('essence/img/bg-img/blog5.jpg') }})">
+	<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: url({{ asset('themes/ezone/assets/img/bg/breadcrumb.jpg') }})">
 		<div class="container-fluid">
 			<div class="breadcrumb-content text-center">
-				<h2>Products</h2>
+				<h2>shop grid 3 column</h2>
 				<ul>
-					<li><a class="no-content" href="#">Home</a></li>
-					<li>Products</li>
+					<li><a href="#">home</a></li>
+					<li>shop grid 3 column</li>
 				</ul>
 			</div>
 		</div>
@@ -60,6 +59,4 @@
 			</div>
 		</div>
 	</div>
-</div>
-
 @endsection

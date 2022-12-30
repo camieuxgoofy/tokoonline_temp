@@ -35,9 +35,4 @@ class OrderItem extends Model
 	{
 		return $this->belongsTo('App\Models\Product');
 	}
-
-	public function order()
-	{
-		return $this->belongsTo('App\Models\Order');
-	}
 }
