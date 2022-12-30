@@ -2,13 +2,21 @@
 
 @section('content')
 <!-- ##### Blog Wrapper Area Start ##### -->
-<div class="single-blog-wrapper">
 
-    <!-- Single Blog Post Thumb -->
-    <div class="single-blog-post-thumb">
-        <img src="essence/img/bg-img/bg-7.jpg" alt="">
+<!-- Single Blog Post Thumb -->
+<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ asset('essence/img/bg-img/bg-4.jpg') }})">
+    <div class="container-fluid">
+        <div class="breadcrumb-content text-center">
+            <h2>About</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li>About</li>
+            </ul>
+        </div>
     </div>
+</div>
 
+<div class="single-blog-wrapper">
     <!-- Single Blog Content Wrap -->
     <div class="single-blog-content-wrapper d-flex">
 
@@ -35,7 +43,7 @@
         -ms-flex: 100%;
         flex: 100%;
         max-width: 100%;
-        width:100%;
+        width: 100%;
         padding: 70px 7%;
     }
 </style>

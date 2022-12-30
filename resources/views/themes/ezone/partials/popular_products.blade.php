@@ -1,16 +1,20 @@
 <!-- product area start -->
 @if ($products)
-<div class="popular-product-area wrapper-padding-3 pt-115 pb-115">
-	<div class="bg-top row align-items-center">
-		<div class="col-md-12">
-			<h1 class="text-center text-white">Lorem Ipsum</h1>
+
+<div class="breadcrumb-area pt-205 breadcrumb-padding pb-210" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ asset('essence/img/bg-img/bg-1.jpg') }})">
+	<div class="container-fluid">
+		<div class="breadcrumb-content text-center">
+			<h2>Home</h2>
+			<ul>
+				<!-- <li><a href="#">Home</a></li>
+				<li>Product</li> -->
+			</ul>
 		</div>
 	</div>
+</div>
+
+<div class="popular-product-area wrapper-padding-3 pt-115 pb-115">
 	<div class="container-fluid">
-		<div class="section-title-6 text-center pt-80 mb-50">
-			<h2 class="">Popular Product</h2>
-			<p class="">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
-		</div>
 		<div class="product-style">
 			<div class="popular-product-active owl-carousel">
 				@foreach ($products as $product)
@@ -50,13 +54,3 @@
 </div>
 <!-- product area end -->
 @endif
-<style>
-	.bg-top {
-		background: linear-gradient(rgba(0, 0, 0, 0.7),
-				rgba(0, 0, 0, 0.7)), url(essence/img/bg-img/home-bg.png);
-		background-repeat: no-repeat;
-		background-size: cover;
-		min-height: 35vh
-		/* filter: brightness(50%); */
-	}
-</style>

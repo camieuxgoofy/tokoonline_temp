@@ -1,4 +1,4 @@
-@if ($slides)
+<!-- @if ($slides)
 	<div class="slider-area">
 		<div class="slider-active owl-carousel">
 			@foreach ($slides as $slide)
@@ -44,4 +44,4 @@
 			</div> --}}
 		</div>
 	</div>
-@endif
+@endif -->

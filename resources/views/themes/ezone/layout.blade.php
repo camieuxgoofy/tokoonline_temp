@@ -46,23 +46,17 @@
     @include('themes.ezone.partials.footer')
     @include('themes.ezone.partials.modals')
 
-    <!-- Vei -->
+    <!-- Essence -->
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
-    <script src="{{ asset('essence/js/jquery/jquery-2.2.4.min.js') }}"></script>
-    <!-- Popper js -->
+    <!-- <script src="{{ asset('essence/js/jquery/jquery-2.2.4.min.js') }}"></script>
     <script src="{{ asset('essence/js/popper.min.js') }}"></script>
-    <!-- Bootstrap js -->
     <script src="{{ asset('essence/js/bootstrap.min.js') }}"></script>
-    <!-- Plugins js -->
     <script src="{{ asset('essence/js/plugins.js') }}"></script>
-    <!-- Classy Nav js -->
     <script src="{{ asset('essence/js/classy-nav.min.js') }}"></script>
-    <!-- Active js -->
     <script src="{{ asset('essence/js/active.js') }}"></script>
-    <!-- Google Map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
-    <script src="{{ asset('essence/js/map-active.js') }}"></script>
-    <!-- End Vei -->
+    <script src="{{ asset('essence/js/map-active.js') }}"></script> -->
+    <!-- End Essence -->
 
     <!-- all js here -->
     <script src=" {{ asset('themes/ezone/assets/js/vendor/jquery-1.12.0.min.js') }}"></script>
