@@ -1,9 +1,6 @@
 <?php
-namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Permission;
 use App\Models\Role;
@@ -75,16 +72,13 @@ class DatabaseSeeder extends Seeder
      */
     private function createUser($role)
     {
-        // $user = factory(User::class)->create();
-        $user = User::factory()->create();
+        $user = factory(User::class)->create();
         $user->assignRole($role->name);
 
-        if ($role->name == 'Admin') {
+        if( $role->name == 'Admin' ) {
             $this->command->info('Here is your admin details to login:');
             $this->command->warn($user->email);
-            $this->command->warn('Password is "secret"');
+            $this->command->warn('Password is "password"');
         }
-        $user = User::factory()->create();
     }
- 
 }
