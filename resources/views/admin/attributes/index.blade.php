@@ -19,9 +19,9 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                @forelse ($attributes as $attribute)
+                                @forelse ($attributes as $i => $attribute)
                                     <tr>    
-                                        <td>{{ $attribute->id }}</td>
+                                        <td>{{ $i+1 }}</td>
                                         <td>{{ $attribute->code }}</td>
                                         <td>{{ $attribute->name }}</td>
                                         <td>{{ $attribute->type }}</td>

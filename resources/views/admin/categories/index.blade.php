@@ -19,9 +19,9 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                @forelse ($categories as $category)
+                                @forelse ($categories as $i => $category)
                                     <tr>    
-                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $i+1 }}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>{{ $category->parent ? $category->parent->name : '' }}</td>

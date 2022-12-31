@@ -67,7 +67,7 @@ class SuppliersController extends Controller
 			Session::flash('error', 'Supplier could not be saved');
 		}
 
-		return redirect('admin/suppliers/' . $supplier->id . '/edit/');
+		return redirect('admin/suppliers');
 	}
 
 	/**

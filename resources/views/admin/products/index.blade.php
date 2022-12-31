@@ -21,9 +21,9 @@
                                 <th style="width:15%">Action</th>
                             </thead>
                             <tbody>
-                                @forelse ($products as $product)
+                                @forelse ($products as $i => $product)
                                     <tr>    
-                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $i+1 }}</td>
                                         <td>{{ $product->sku }}</td>
                                         <td>{{ $product->type }}</td>
                                         <td>{{ $product->name }}</td>
