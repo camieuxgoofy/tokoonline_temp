@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Shipment extends Model
 {
+	use Uuids;
     use HasFactory;
     public const PENDING = 'pending';
 	public const SHIPPED = 'shipped';
