@@ -171,7 +171,12 @@ class ProductController extends Controller
 			function () use ($params) {
 				$categoryIds = !empty($params['category_ids']) ? $params['category_ids'] : [];
 				$product = Product::create($params);
-				$product->categories()->sync($categoryIds);
+
+				foreach( $categoryIds as $category_id ) {
+					$data_to_sync[ $category_id ] = [ 'id' => Str::uuid() ];
+				 }
+
+				$product->categories()->sync($data_to_sync, false);
 
 				if ($params['type'] == 'configurable') {
 					$this->_generateProductVariants($product, $params);
