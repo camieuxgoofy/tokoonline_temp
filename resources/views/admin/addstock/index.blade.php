@@ -6,15 +6,15 @@
             <div class="col-lg-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Barang Masuk</h2>
+                        <h2>Stock In</h2>
                     </div>
                     <div class="card-body">
                         @include('admin.partials.flash')
                         <table id="basic-data-table" class="table nowarp table-bordered table-striped " style="width:100%">
                             <thead>
                                 <th>#</th>
-                                <th>Tanggal</th>
-                                <th>Supplier</th>
+                                <th>Create Date</th>
+                                <th>Supplier Name</th>
                                 <th>Created By</th>
                                 <th>Action</th>
                             </thead>
@@ -28,7 +28,7 @@
                                         <td>
                                             <a href="{{ url('admin/addstocks/'. $value->id ) }}" class="btn btn-primary btn-sm">detail</a>
                                             <button class="btn btn-warning btn-sm">edit</button>
-                                            <button class="btn btn-danger btn-sm">delete</button>
+                                            <!-- <button class="btn btn-danger btn-sm">delete</button> -->
                                         </td>
                                     </tr>
                                 @empty

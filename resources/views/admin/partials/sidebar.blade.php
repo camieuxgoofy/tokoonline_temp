@@ -8,7 +8,7 @@
             <a href="{{ url('admin/dashboard') }}">
     
 
-                <span class="brand-name text-truncate">Sleek Dashboard</span>
+                <span class="brand-name text-truncate">Dashboard</span>
               </a>
             </div>
 
@@ -52,11 +52,11 @@
 								<span class="nav-text">Categories</span>
 								</a>
 							</li>
-							<li class="{{ ($currentAdminSubMenu == 'attribute') ? 'active' : ''}}">
+							<!-- <li class="{{ ($currentAdminSubMenu == 'attribute') ? 'active' : ''}}">
 								<a class="sidenav-item-link" href="{{ url('admin/attributes')}}">
 								<span class="nav-text">Attributes</span>
 								</a>
-							</li>
+							</li> -->
 						</div>
 					</ul>
 				</li>
@@ -71,14 +71,14 @@
 						<div class="sub-menu">
 							<li  class="{{ ($currentAdminSubMenu == 'add_stock') ? 'active' : ''}}">
 								<a class="sidenav-item-link" href="{{ url('admin/addstocks')}}">
-								<span class="nav-text">Barang Masuk</span>
+								<span class="nav-text">Stock In</span>
 								</a>
 							</li>
 						</div>
 						<div class="sub-menu">
 							<li  class="{{ ($currentAdminSubMenu == 'outcoming_stock') ? 'active' : ''}}">
 								<a class="sidenav-item-link" href="{{ url('admin/outcomingstocks')}}">
-								<span class="nav-text">Barang Keluar</span>
+								<span class="nav-text">Stock Out</span>
 								</a>
 							</li>
 						</div>
@@ -98,16 +98,16 @@
 								<span class="nav-text">Orders</span>
 								</a>
 							</li>
-							<li class="{{ ($currentAdminSubMenu == 'trashed-order') ? 'active' : ''}}">
+							<!-- <li class="{{ ($currentAdminSubMenu == 'trashed-order') ? 'active' : ''}}">
 								<a class="sidenav-item-link" href="{{ url('admin/orders/trashed')}}">
 								<span class="nav-text">Trashed</span>
 								</a>
-							</li>
-							<li class="{{ ($currentAdminSubMenu == 'shipment') ? 'active' : ''}}">
+							</li> -->
+							<!-- <li class="{{ ($currentAdminSubMenu == 'shipment') ? 'active' : ''}}">
 								<a class="sidenav-item-link" href="{{ url('admin/shipments')}}">
 								<span class="nav-text">Shipments</span>
 								</a>
-							</li>
+							</li> -->
 						</div>
 					</ul>
 				</li>
@@ -122,12 +122,17 @@
 						<div class="sub-menu">
 							<li  class="{{ ($currentAdminSubMenu == 'report-revenue') ? 'active' : ''}}" >
 								<a class="sidenav-item-link" href="{{ url('admin/reports/revenue')}}">
-								<span class="nav-text">Revenue</span>
+								<span class="nav-text">Income</span>
+								</a>
+							</li>
+							<li  class="{{ ($currentAdminSubMenu == 'report-payment') ? 'active' : ''}}" >
+								<a class="sidenav-item-link" href="{{ url('admin/reports/payment')}}">
+								<span class="nav-text">Stock In</span>
 								</a>
 							</li>
 							<li  class="{{ ($currentAdminSubMenu == 'report-product') ? 'active' : ''}}" >
 								<a class="sidenav-item-link" href="{{ url('admin/reports/product')}}">
-								<span class="nav-text">Products</span>
+								<span class="nav-text">Stock Out</span>
 								</a>
 							</li>
 							<li  class="{{ ($currentAdminSubMenu == 'report-inventory') ? 'active' : ''}}" >
@@ -135,20 +140,15 @@
 								<span class="nav-text">Inventories</span>
 								</a>
 							</li>
-							<li  class="{{ ($currentAdminSubMenu == 'report-payment') ? 'active' : ''}}" >
-								<a class="sidenav-item-link" href="{{ url('admin/reports/payment')}}">
-								<span class="nav-text">Payments</span>
-								</a>
-							</li>
 						</div>
 					</ul>
 				</li>
 				<li  class="has-sub {{ ($currentAdminMenu == 'general') ? 'expand active' : ''}}">
-					<a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#general"
+					<!-- <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#general"
 						aria-expanded="false" aria-controls="general">
 						<i class="mdi mdi-settings"></i>
 						<span class="nav-text">General</span> <b class="caret"></b>
-					</a>
+					</a> -->
 					<ul class="collapse {{ ($currentAdminMenu == 'general') ? 'show' : ''}}"  id="general"
 						data-parent="#sidebar-menu">
 						<div class="sub-menu">
@@ -164,7 +164,7 @@
 					<a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#auth"
 						aria-expanded="false" aria-controls="auth">
 						<i class="mdi mdi-account-multiple-outline"></i>
-						<span class="nav-text">Users &amp; Roles</span> <b class="caret"></b>
+						<span class="nav-text">Users </span> <b class="caret"></b>
 					</a>
 					<ul class="collapse {{ ($currentAdminMenu == 'role-user') ? 'show' : ''}}"  id="auth"
 						data-parent="#sidebar-menu">
@@ -174,11 +174,11 @@
 								<span class="nav-text">Users</span>
 								</a>
 							</li>
-							<li class="{{ ($currentAdminSubMenu == 'role') ? 'active' : ''}}">
+							<!-- <li class="{{ ($currentAdminSubMenu == 'role') ? 'active' : ''}}">
 								<a class="sidenav-item-link" href="{{ url('admin/roles')}}">
 								<span class="nav-text">Roles</span>
 								</a>
-							</li>
+							</li> -->
 						</div>
 					</ul>
 				</li>             

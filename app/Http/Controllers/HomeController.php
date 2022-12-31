@@ -31,8 +31,8 @@ class HomeController extends Controller
         $products = Product::popular()->get();
         $this->data['products'] = $products;
 
-        $slides = Slide::active()->orderBy('position', 'ASC')->get();
-        $this->data['slides'] = $slides;
+        // $slides = Slide::active()->orderBy('position', 'ASC')->get();
+        // $this->data['slides'] = $slides;
 
         return $this->loadTheme('home', $this->data);
     }

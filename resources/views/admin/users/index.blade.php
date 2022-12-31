@@ -17,7 +17,7 @@
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Created At</th>
-                                <th>Action</th>
+                                <!-- <th>Action</th> -->
                             </thead>
                             <tbody>
                                 @forelse ($users as $user)
@@ -27,7 +27,7 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->roles->implode('name', ', ') }}</td>
                                         <td>{{ $user->created_at }}</td>
-                                        <td>
+                                        <!-- <td>
                                         @if (!$user->hasRole('Admin'))
                                             @can('edit_categories')
                                                 <a href="{{ url('admin/users/'. $user->id .'/edit') }}" class="btn btn-warning btn-sm">edit</a>
@@ -40,7 +40,7 @@
                                                 {!! Form::close() !!}
                                             @endcan
                                         @endif
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 @empty
                                     <tr>
@@ -52,11 +52,11 @@
                         {{ $users->links() }}
                     </div>
 
-                    @can('add_users')
+                    <!-- @can('add_users')
                         <div class="card-footer text-right">
                             <a href="{{ url('admin/users/create') }}" class="btn btn-primary">Add New</a>
                         </div>
-                    @endcan
+                    @endcan -->
                 </div>
             </div>
         </div>

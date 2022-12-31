@@ -16,7 +16,7 @@
                             <thead>
                                 <th>#</th>
                                 <th>Quantity</th>
-                                <th>Harga Jual</th>
+                                <th>selling price</th>
                                 <th>Product</th>
                             </thead>
                             <tbody>
@@ -37,11 +37,11 @@
                         {{ $data->links() }}
                     </div>
 
-                    @can('add_outcomingstocks')
+                    <!-- @can('add_outcomingstocks')
                         <div class="card-footer text-right">
                             <a href="{{ url('admin/outcomingstocks/create') }}" class="btn btn-primary">Add New</a>
                         </div>
-                    @endcan
+                    @endcan -->
                 </div>
             </div>
         </div>

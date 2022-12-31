@@ -99,15 +99,15 @@ $formTitle = !empty($outstocks) ? 'Update' : 'New'
                                 <th>#</th>
                                 <th>Product</th>
                                 <th>Quantity</th>
-                                <th>Harga Jual</th>
-                                <th>Total Harga</th>
+                                <th>Selling Price</th>
+                                <th>Total Price</th>
                                 <th>Action</th>
                             </thead>
                             <tbody id="table_addstock">
                             </tbody>
                         </table>
                         <div class="form-footer">
-                            <button onclick="submit()" type="submit" class="btn btn-primary btn-default">Simpan data</button>
+                            <button onclick="submit()" type="submit" class="btn btn-primary btn-default">Save</button>
                         </div>
                     </div>
                 </div>

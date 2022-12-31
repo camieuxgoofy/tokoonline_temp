@@ -13,11 +13,11 @@
                         <table id="basic-data-table" class="table nowarp table-bordered table-striped " style="width:100%">
                             <thead>
                                 <th>#</th>
-                                <th>Tanggal</th>
+                                <th>Create Date</th>
                                 <th>Category</th>
                                 <!-- <th>File Name</th> -->
                                 <th>Total Product</th>
-                                <th>Uploaded By</th>
+                                <th>Created By</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
@@ -32,7 +32,7 @@
                                         <td>
                                             <a href="{{ url('admin/outcomingstocks/'. $value->id ) }}" class="btn btn-primary btn-sm">detail</a>
                                             <button class="btn btn-warning btn-sm">edit</button>
-                                            <button class="btn btn-danger btn-sm">delete</button>
+
                                         </td>
                                     </tr>
                                 @empty
