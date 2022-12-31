@@ -8,10 +8,12 @@
 
 <div class="content">
     <div class="row">
-        <div class="col-lg-3">
+        <div class="{{!empty($product) ? 'col-lg-3' : 'col-lg-12'}}">
+            @if (!empty($product))
             @include('admin.products.product_menus')
+            @endif
         </div>
-        <div class="col-lg-9">
+        <div class="{{!empty($product) ? 'col-lg-9' : 'col-lg-12'}}">
             <div class="card card-default">
                 <div class="card-header card-header-border-bottom">
                         <h2>{{ $formTitle }} Product</h2>
