@@ -39,7 +39,7 @@
         <div class="col-md-4 col-xl-3">
             <div class="card bg-c-pink order-card">
                 <div class="card-block">
-                    <h6 class="m-b-20">Produk Stok Kurang</h6>
+                    <h6 class="m-b-20">Restock Needed</h6>
                     <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>{{ $qty_min }}</span></h2>
                     <!-- <p class="m-b-0">Completed Orders<span class="f-right">351</span></p> -->
                 </div>
@@ -50,15 +50,15 @@
 
 
 <div class="card-body">
+    <h2 id="h2">Stock Under 10 (Restock Needed)</h2>
     <table class="table table-hover table-bordered" id="sampleTable">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama</th>
-                <th>Harga</th>
-                <th>Sisa Stok</th>
-                <th>Nama Supplier</th>
-                <th>Hubungi Supplier</th>
+                <th>Name</th>
+                <th>stock</th>
+                <th>Supplier Name</th>
+                <th>Call Supplier</th>
             </tr>
         </thead>
         <tbody>
@@ -68,7 +68,7 @@
             <tr>
                 <td>{{$no++}}</td>
                 <td>{{ $p->product_name }}</td>
-                <td>{{ $p->product_price }}</td>
+
                 <td>{{ $p->product_qty }}</td>
                 <td>{{ $p->supplier_name }}</td>
                 <td><a class="btn btn-success text-center" href="https://api.whatsapp.com/send?phone={{ $p->supp_wa }}" role="button"><i class="fa fa-whatsapp"></i></a></td>
@@ -136,6 +136,12 @@
         text-align: center;
         text-align: -webkit-center;
     }
+
+    #h2 {
+        color: #D01F1F;
+        padding: 25px;
+    }
+
 </style>
 
 @stop
