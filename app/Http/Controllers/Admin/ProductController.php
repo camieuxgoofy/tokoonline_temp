@@ -102,11 +102,11 @@ class ProductController extends Controller
 		$variants = $this->_generateAttributeCombinations($variantAttributes);
 		
 		if ($variants) {
-			foreach ($variants as $variant) {
+			foreach ($variants as $key => $variant) {
 				$variantParams = [
 					'parent_id' => $product->id,
 					'user_id' => Auth::user()->id,
-					'sku' => $product->sku . '-' .implode('-', array_values($variant)),
+					'sku' => $product->sku . '-' .$key,
 					'type' => 'simple',
 					'name' => $product->name . $this->_convertVariantAsName($variant),
 				];
@@ -120,7 +120,6 @@ class ProductController extends Controller
 				foreach( $categoryIds as $category_id ) {
 					$data_to_sync[ $category_id ] = [ 'id' => Str::uuid() ];
 				}
-				
 				$newProductVariant->categories()->sync($data_to_sync, false);
 
 				$this->_saveProductAttributeValues($newProductVariant, $variant, $product->id);
