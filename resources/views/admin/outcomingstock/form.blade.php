@@ -201,7 +201,7 @@ $formTitle = !empty($outstocks) ? 'Update' : 'New'
             },
             type: 'json',
             success: function(data) {
-                // window.location.href = "{{ url('admin/outcomingstocks')}}";
+                window.location.href = "{{ url('admin/outcomingstocks')}}";
             }
         });
     }

@@ -20,9 +20,9 @@
                                 <!-- <th>Action</th> -->
                             </thead>
                             <tbody>
-                                @forelse ($users as $user)
+                                @forelse ($users as $i => $user)
                                     <tr>    
-                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $i+1 }}</td>
                                         <td>{{ $user->first_name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->roles->implode('name', ', ') }}</td>

@@ -20,9 +20,9 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                @forelse ($suppliers as $supplier)
+                                @forelse ($suppliers as $i => $supplier)
                                     <tr>    
-                                        <td>{{ $supplier->id }}</td>
+                                        <td>{{ $i+1 }}</td>
                                         <td>{{ $supplier->name }}</td>
                                         <td>{{ $supplier->wa_number }}</td>
                                         <td>{{ $supplier->email ? $supplier->email : '-' }}</td>

@@ -22,9 +22,9 @@
                             <th>Action</th>
                         </thead>
                         <tbody>
-                            @forelse ($productImages as $image)
+                            @forelse ($productImages as $i => $image)
                                 <tr>    
-                                    <td>{{ $image->id }}</td>
+                                    <td>{{ $i+1 }}</td>
                                     <td><img src="{{ asset('storage/'.$image->small) }}" style="width:100px"/></td>
                                     <td>{{ $image->created_at }}</td>
                                     <td>

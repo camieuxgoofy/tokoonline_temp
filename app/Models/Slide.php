@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
 class Slide extends Model
 {
+	use Uuids;
 	protected $guarded = [
 		'id',
 		'created_at',

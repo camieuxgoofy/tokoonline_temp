@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+	use Uuids;
 	protected $fillable = [
 		'parent_id',
 		'user_id',
