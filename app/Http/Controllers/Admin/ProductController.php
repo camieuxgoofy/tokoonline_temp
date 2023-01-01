@@ -109,6 +109,7 @@ class ProductController extends Controller
 					'sku' => $product->sku . '-' .$key,
 					'type' => 'simple',
 					'name' => $product->name . $this->_convertVariantAsName($variant),
+					'supplier_id' => $product->supplier_id,
 				];
 
 				$variantParams['slug'] = Str::slug($variantParams['name']);
