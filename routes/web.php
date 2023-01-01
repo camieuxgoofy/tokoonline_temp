@@ -53,6 +53,7 @@ Route::get('orders/received/{orderID}', [OrderController::class, 'received']);
 Route::get('orders/cities', [OrderController::class, 'cities']);
 Route::get('orders', [OrderController::class, 'index']);
 Route::get('orders/{orderID}', [OrderController::class, 'show']);
+Route::post('orders/complete/{orderID}', [OrderController::class, 'doComplete']);
 
 Route::post('payments/notification', [PaymentController::class, 'notification']);
 Route::get('payments/completed', [PaymentController::class, 'completed']);

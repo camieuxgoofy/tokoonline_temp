@@ -91,6 +91,13 @@
 							</tbody>
 						</table>
 					</div>
+					@if ($order->isDelivered())
+					<a href="#" class="btn btn-block mt-2 btn-lg btn-success btn-pill" onclick="event.preventDefault();
+						document.getElementById('complete-form-{{ $order->id }}').submit();"> Mark as Completed</a>
+
+						{!! Form::open(['url' => 'orders/complete/'. $order->id, 'id' => 'complete-form-'. $order->id, 'style' => 'display:none']) !!}
+						{!! Form::close() !!}
+					@endif
 				</div>
 			</div>
 		</div>

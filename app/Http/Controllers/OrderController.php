@@ -545,4 +545,23 @@ class OrderController extends Controller
 
 		return $this->loadTheme('orders/received', $this->data);
 	}
+
+	public function doComplete(Request $request, $id)
+	{
+		$order = Order::findOrFail($id);
+		
+		if (!$order->isDelivered()) {
+			\Session::flash('error', 'Mark as complete the order can be done if the latest status is delivered');
+			return redirect('orders');
+		}
+
+		$order->status = Order::COMPLETED;
+		$order->approved_by = \Auth::user()->id;
+		$order->approved_at = now();
+		
+		if ($order->save()) {
+			\Session::flash('success', 'The order has been marked as completed!');
+			return redirect('orders');
+		}
+	}
 }
