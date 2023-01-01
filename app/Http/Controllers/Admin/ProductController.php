@@ -116,7 +116,12 @@ class ProductController extends Controller
 				$newProductVariant = Product::create($variantParams);
 
 				$categoryIds = !empty($params['category_ids']) ? $params['category_ids'] : [];
-				$newProductVariant->categories()->sync($categoryIds);
+
+				foreach( $categoryIds as $category_id ) {
+					$data_to_sync[ $category_id ] = [ 'id' => Str::uuid() ];
+				}
+				
+				$newProductVariant->categories()->sync($data_to_sync, false);
 
 				$this->_saveProductAttributeValues($newProductVariant, $variant, $product->id);
 			}
@@ -174,7 +179,7 @@ class ProductController extends Controller
 
 				foreach( $categoryIds as $category_id ) {
 					$data_to_sync[ $category_id ] = [ 'id' => Str::uuid() ];
-				 }
+				}
 
 				$product->categories()->sync($data_to_sync, false);
 
@@ -252,7 +257,12 @@ class ProductController extends Controller
 			function () use ($product, $params) {
 				$categoryIds = !empty($params['category_ids']) ? $params['category_ids'] : [];
 				$product->update($params);
-				$product->categories()->sync($categoryIds);
+
+				foreach( $categoryIds as $category_id ) {
+					$data_to_sync[ $category_id ] = [ 'id' => Str::uuid() ];
+				}
+
+				$product->categories()->sync($data_to_sync, false);
 
 				if ($product->type == 'configurable') {
 					$this->_updateProductVariants($params);
