@@ -125,13 +125,13 @@
 								<span class="nav-text">Income</span>
 								</a>
 							</li>
-							<li  class="{{ ($currentAdminSubMenu == 'report-payment') ? 'active' : ''}}" >
-								<a class="sidenav-item-link" href="{{ url('admin/reports/payment')}}">
+							<li  class="{{ ($currentAdminSubMenu == 'report-stock-in') ? 'active' : ''}}" >
+								<a class="sidenav-item-link" href="{{ url('admin/reports/stock-in')}}">
 								<span class="nav-text">Stock In</span>
 								</a>
 							</li>
-							<li  class="{{ ($currentAdminSubMenu == 'report-product') ? 'active' : ''}}" >
-								<a class="sidenav-item-link" href="{{ url('admin/reports/product')}}">
+							<li  class="{{ ($currentAdminSubMenu == 'report-stock-out') ? 'active' : ''}}" >
+								<a class="sidenav-item-link" href="{{ url('admin/reports/stock-out')}}">
 								<span class="nav-text">Stock Out</span>
 								</a>
 							</li>

@@ -50,7 +50,7 @@ class AddStocksController extends Controller
 	public function create()
 	{
 		$suppliers = Supplier::orderBy('name', 'ASC')->get();
-		$products = Product::orderBy('name', 'ASC')->get();
+		$products = Product::where('type', 'simple')->orderBy('name', 'ASC')->get();
 
 		$this->data['suppliers'] = $suppliers;
 		$this->data['products'] = $products;

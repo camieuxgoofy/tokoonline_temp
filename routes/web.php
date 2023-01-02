@@ -110,6 +110,8 @@ Route::group(
 		Route::get('reports/product', [ReportController::class, 'product']);
 		Route::get('reports/inventory', [ReportController::class, 'inventory']);
 		Route::get('reports/payment', [ReportController::class, 'payment']);
+		Route::get('reports/stock-in', [ReportController::class, 'stockIn']);
+		Route::get('reports/stock-out', [ReportController::class, 'stockOut']);
 	}
 );
 

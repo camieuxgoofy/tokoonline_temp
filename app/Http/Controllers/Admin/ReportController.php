@@ -11,7 +11,8 @@ use App\Exports\ReportRevenueExport;
 use App\Exports\ReportProductExport;
 use App\Exports\ReportInventoryExport;
 use App\Exports\ReportPaymentExport;
-
+use App\Exports\ReportStockInExport;
+use App\Exports\ReportStockOutExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 use PDF;
@@ -381,5 +382,181 @@ class ReportController extends Controller
 		}
 
 		return view('admin.reports.payment', $this->data);
+	}
+
+	public function stockIn(Request $request)
+	{
+		$this->data['currentAdminSubMenu'] = 'report-stock-in';
+
+		$startDate = $request->input('start');
+		$endDate = $request->input('end');
+
+		if ($startDate && !$endDate) {
+			\Session::flash('error', 'The end date is required if the start date is present');
+			return redirect('admin/reports/stock-in');
+		}
+
+		if (!$startDate && $endDate) {
+			\Session::flash('error', 'The start date is required if the end date is present');
+			return redirect('admin/reports/stock-in');
+		}
+
+		if ($startDate && $endDate) {
+			if (strtotime($endDate) < strtotime($startDate)) {
+				\Session::flash('error', 'The end date should be greater or equal than start date');
+				return redirect('admin/reports/stock-in');
+			}
+
+			$earlier = new \DateTime($startDate);
+			$later = new \DateTime($endDate);
+			$diff = $later->diff($earlier)->format("%a");
+			
+			if ($diff >= 31) {
+				\Session::flash('error', 'The number of days in the date ranges should be lower or equal to 31 days');
+				return redirect('admin/reports/stock-in');
+			}
+		} else {
+			$currentDate = date('Y-m-d');
+			$startDate = date('Y-m-01', strtotime($currentDate));
+			$endDate = date('Y-m-t', strtotime($currentDate));
+		}
+
+		$this->data['startDate'] = $startDate;
+		$this->data['endDate'] = $endDate;
+
+		$sql = "
+		SELECT
+			p.sku as product_sku,
+			s.name as supplier_name,
+			p.name as product_name,
+			sum(das.qty) as total_qty,
+			sum(das.qty*das.purchase_price) as total_purchase
+		FROM detail_add_stocks das
+		JOIN add_stocks ass ON ass.id = das.add_stock_id	
+		JOIN products p ON p.id = das.product_id
+		JOIN suppliers s ON s.id = ass.supplier_id
+		WHERE DATE(ass.date) >= :start_date
+			AND DATE(ass.date) <= :end_date
+		GROUP BY das.product_id
+		";
+
+		$datas = \DB::select(
+			\DB::raw($sql),
+			[
+				'start_date' => $startDate,
+				'end_date' => $endDate
+			]
+		);
+
+		$this->data['data'] = ($startDate && $endDate) ? $datas : [];
+
+		if ($exportAs = $request->input('export')) {
+			if (!in_array($exportAs, ['xlsx', 'pdf'])) {
+				\Session::flash('error', 'Invalid export request');
+				return redirect('admin/reports/stock-in');
+			}
+
+			if ($exportAs == 'xlsx') {
+				$fileName = 'report-stock-in-'. $startDate .'-'. $endDate .'.xlsx';
+
+				return Excel::download(new ReportStockInExport($datas), $fileName);
+			}
+
+			if ($exportAs == 'pdf') {
+				$fileName = 'report-stock-in-'. $startDate .'-'. $endDate .'.pdf';
+				$pdf = PDF::loadView('admin.reports.exports.stock_in_pdf', $this->data);
+
+				return $pdf->download($fileName);
+			}
+		}
+
+		return view('admin.reports.stock_in', $this->data);
+	}
+
+	public function stockOut(Request $request)
+	{
+		$this->data['currentAdminSubMenu'] = 'report-stock-out';
+
+		$startDate = $request->input('start');
+		$endDate = $request->input('end');
+
+		if ($startDate && !$endDate) {
+			\Session::flash('error', 'The end date is required if the start date is present');
+			return redirect('admin/reports/stock-out');
+		}
+
+		if (!$startDate && $endDate) {
+			\Session::flash('error', 'The start date is required if the end date is present');
+			return redirect('admin/reports/stock-out');
+		}
+
+		if ($startDate && $endDate) {
+			if (strtotime($endDate) < strtotime($startDate)) {
+				\Session::flash('error', 'The end date should be greater or equal than start date');
+				return redirect('admin/reports/stock-out');
+			}
+
+			$earlier = new \DateTime($startDate);
+			$later = new \DateTime($endDate);
+			$diff = $later->diff($earlier)->format("%a");
+			
+			if ($diff >= 31) {
+				\Session::flash('error', 'The number of days in the date ranges should be lower or equal to 31 days');
+				return redirect('admin/reports/stock-out');
+			}
+		} else {
+			$currentDate = date('Y-m-d');
+			$startDate = date('Y-m-01', strtotime($currentDate));
+			$endDate = date('Y-m-t', strtotime($currentDate));
+		}
+
+		$this->data['startDate'] = $startDate;
+		$this->data['endDate'] = $endDate;
+
+		$sql = "
+		SELECT
+			p.sku as product_sku,
+			p.name as product_name,
+			sum(oi.qty) as total_qty,
+			sum(oi.sub_total) as total_purchase
+		FROM order_items oi
+		JOIN orders o ON o.id = oi.order_id	
+		JOIN products p ON p.id = oi.product_id
+		WHERE DATE(o.order_date) >= :start_date
+			AND DATE(o.order_date) <= :end_date
+		GROUP BY oi.product_id
+		";
+
+		$datas = \DB::select(
+			\DB::raw($sql),
+			[
+				'start_date' => $startDate,
+				'end_date' => $endDate
+			]
+		);
+
+		$this->data['data'] = ($startDate && $endDate) ? $datas : [];
+
+		if ($exportAs = $request->input('export')) {
+			if (!in_array($exportAs, ['xlsx', 'pdf'])) {
+				\Session::flash('error', 'Invalid export request');
+				return redirect('admin/reports/stock-out');
+			}
+
+			if ($exportAs == 'xlsx') {
+				$fileName = 'report-stock-out-'. $startDate .'-'. $endDate .'.xlsx';
+
+				return Excel::download(new ReportStockOutExport($datas), $fileName);
+			}
+
+			if ($exportAs == 'pdf') {
+				$fileName = 'report-stock-out-'. $startDate .'-'. $endDate .'.pdf';
+				$pdf = PDF::loadView('admin.reports.exports.stock_out_pdf', $this->data);
+
+				return $pdf->download($fileName);
+			}
+		}
+
+		return view('admin.reports.stock_out', $this->data);
 	}
 }
